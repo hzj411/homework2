@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form action="date.html" enctype="multipart/form-data">
+        <fieldset>
+          <p style="color: rgb(102, 182, 225)">欢迎注册会员</p>
+          <div>
+            <label class="text">手机号码:</label>
+            <input class="frame" type="text" name="username" placeholder="11位手机号" />
+            <span class="required">必填</span>
+          </div>
+          <div>
+            <label class="text">创建密码:</label>
+            <input class="frame" type="password" name="pwd" placeholder="8位密码" />
+            <span class="required">必填</span>
+          </div>
+          <div>
+            <label class="text">注册邮箱:</label>
+            <input
+              class="frame"
+              type="text"
+              name="email"
+              placeholder="例如:wusthzj@sina.com"
+            />
+            <span class="required">必填</span>
+          </div>
+
+          <div>
+            <label class="text">验证码:</label>
+            <input class="frame" type="text" name="yzm" />
+            <span class="gcode" id="gcode">95r3</span>
+            <img
+              id="replace"
+              src="images/arrow_03.png"
+              height="20px"
+              width="20px"
+            />
+          </div>
+
+          <div>
+            <label class="text">性别:</label>
+            <input class="sex" type="radio" name="sex" value="male" checked="checked" /><span class="sex">男</span>
+
+            <input class="sex" type="radio" name="sex" value="female" /><span class="sex">女</span>
+          </div>
+
+          <div>
+            <label  class="text">生日:</label>
+            <input class="frame" type="date" name="mydate" />
+          </div>
+
+          <div>
+            <label class="text">籍贯:</label>
+            <select class="select" id="jiguan" name="province">
+              <option value="0">湖南省</option>
+              <option value="1" selected="selected">湖北省</option>
+              <option value="2">江西省</option>
+              <option value="3">河北省</option>
+            </select>
+            <select class="select" id="jiguan" name="home">
+              <option value="0">北京市</option>
+              <option value="1" selected="selected">武汉市</option>
+              <option value="2">上海市</option>
+              <option value="3">重庆市</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text">个人学历:</label>
+            <select class="select" name="edu">
+              <option value="0">高中</option>
+              <option value="1" selected="selected">本科</option>
+              <option value="2">硕士</option>
+              <option value="3">博士</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text">月薪:</label>
+            <input
+              class="adjust"
+              type="range"
+              name="pay"
+              id="pay"
+              min="3000"
+              max="12000"
+              step="1"
+              value="8000"
+            />
+            <span id="msg" class="adjust"></span>
+          </div>
+
+          <div>
+            <label class="text">个人爱好:</label>
+            <span class="adjust"><input type="checkbox" name="like" />唱歌</span>
+            <span class="adjust"><input type="checkbox" name="like" />跑步</span>
+            <span class="adjust"><input type="checkbox" name="like" />游泳</span>
+          </div>
+          <div>
+            <label class="text">个人照片:</label>
+            <input class="adjust" type="file" id="test-image-file" name="test" />
+            <div id="test-image-preview"></div>
+          </div>
+
+          <div>
+            <label class="text">个人简介:</label>
+            <textarea class="textarea" name="intro" id="" cols="30" rows="10"></textarea>
+          </div>
+
+          <div>
+            <label> </label>
+            <input class="button1" type="submit" value="提交" />
+            <input type="reset" value="重填" />
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+
+  <style>
+    .text {
+      cursor: pointer;
+      display: inline-block;
+      padding: 3px 6px;
+      margin: 5px 5px;
+      font-weight: 600;
+      text-align: right;
+      width: 70px;
+      vertical-align: top;
+    }
+    .required {
+      color: red;
+    }
+    .sex{
+      position: relative;
+      top: 6px;
+      font-size: 13px;
+    }
+    fieldset {
+      background-color: #f4fcff;
+      border: 1;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      padding: 2;
+      width: 30%;
+    }
+    .frame, .select{
+      margin: 8px 0;
+      height: 29px;
+      width: 200px;
+      padding: 3px 8px;
+      box-sizing: border-box;
+      border: 1px solid grey;
+      border-radius: 5px;
+    }
+    #jiguan{
+      width: 98px;
+    }
+    .adjust{
+      position: relative;
+      top: 8px;
+    }
+    #test-image-preview{
+      border: 1px solid silver;
+      width: 200px;
+      height: 200px;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-bottom: 6px;
+      margin-top: 6px;
+      margin-left: 96px;
+    }
+    .textarea{
+      width: 200px;
+      box-sizing: border-box;
+    }
+    .button1{
+      margin: 8px 20px 8px 96px ;
+    }
+    #replace{
+      position: relative;
+      top: 4px;
+    }
+    .gcode {
+      width: 80px;
+      height: 30px;
+      background-image: url(./images/bg1.jpg);
+      color: rgb(123, 163, 243);
+    }
+  </style>
+
+  <script>
+    var msg = document.getElementById("msg"); // 根据id值找到span元素
+    window.onload = function () {
+      msg.innerHTML = document.getElementById("pay").value; // 获取区间域初始value值
+    };
+    document.getElementById("pay").onchange = function () {
+      msg.innerHTML = this.value; // 将当前区间域的value作为span元素的内容
+    };
+
+    var fileInput = document.getElementById("test-image-file");
+    var preview = document.getElementById("test-image-preview");
+    fileInput.addEventListener("change", function () {
+      // 监听change事件
+      preview.style.backgroundImage = ""; // 清除背景图片
+      var file = fileInput.files[0]; // 获取File引用
+      if (
+        file.type !== "image/jpeg" &&
+        file.type !== "image/png" &&
+        file.type !== "image/gif"
+      ) {
+        alert("不是有效的图片文件!");
+        return;
+      }
+      var reader = new FileReader(); // 读取文件
+      reader.onload = function (e) {
+        // 发起一个异步操作来读取文件内容
+        var data = e.target.result; // data串形如： 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+        preview.style.backgroundImage = "url(" + data + ")";
+      };
+      reader.readAsDataURL(file); // 以DataURL的形式读取文件
+
+      var egcode = document.getElementById("gcode");
+      var replace = document.getElementById("replace");
+      var getcode = function () {
+      var code = Math.random().toString(36).substr(3, 4);
+        return code;
+      };
+      egcode.onclick = function () {
+        alert("dawda");
+      };
+      replace.onclick = function () {
+        egcode.innerHTML = getcode();
+      };
+    });
+
+  </script>
+</html>

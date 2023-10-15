@@ -1,0 +1,245 @@
+:root {
+  --primary-color: #31c27c;
+  /* 定义主题颜色变量，值为#31c27c   */
+}
+
+body {
+  margin: 0;
+  /* 网页边缘与内容的间距为0   */
+  background: #f5f5f5;
+  /* 网页背景颜色为#f5f5f5   */
+  font-family: Microsoft Yahei;
+  /* 字体为微软雅黑   */
+  font-size: 14px;
+  /* 字体大小为14像素   */
+}
+
+a {
+  text-decoration: none;
+  /*  去掉超链接的下划线   */
+  color: #000;
+  /*  超链接的颜色为黑色   */
+}
+
+header {
+  height: 90px;
+  /* 高度为90像素   */
+  background: white;
+  /* 背景色为白色   */
+  display: flex;
+  /* 使用弹性布局来排列子元素   */
+  align-items: center;
+  /* 子元素在交叉轴上居中对齐   */
+}
+
+.header-inner,
+main {
+  /* 定义了.header-inner和main的样式    */
+  padding: 20px;
+  /* 内边距为20像素   */
+  margin: auto;
+  /* 外边距自动，使元素水平居中   */
+}
+
+.tag-list {
+  /* 定义了标签列表.tag-list的样式   */
+  margin-top: 50px;
+  /* 上外边距为50像素   */
+  margin-bottom: 15px;
+  /* 下外边距为15像素   */
+}
+
+.tag-item {
+  /* 定义了标签项.tag-item的样式   */
+  display: inline-block;
+  /* 以内联块的方式显示标签项   */
+  padding: 0 8px;
+  /* 左右内边距为8像素，上下内边距为0   */
+  margin-right: 24px;
+  /* 右外边距为24像素   */
+  line-height: 26px;
+  /* 行高为26像素   */
+  color: #000;
+  /* 标签项的颜色为黑色   */
+  text-decoration: none;
+  /* 去掉标签项的下划线   */
+}
+
+.tag-active {
+  /* 定义了被选中的标签项.tag-active的样式   */
+  background: var(--primary-color);
+  /* 背景色为主题颜色变量值#31c27c   */
+  color: white;
+  /* 被选中的标签项的颜色为白色   */
+}
+
+.tag-item:not(.tag-active):hover {
+  /* 当鼠标悬停在非选中的标签项上时，改变其颜色为主题颜色变量值#31c27c   */
+  color: var(--primary-color);
+}
+
+.nowrap {
+  /* 定义了.nowrap的样式，使文本不换行，超出部分用省略号表示   */
+  white-space: nowrap;
+  /* 文本不换行   */
+  overflow: hidden;
+  /* 超出的部分隐藏起来   */
+  text-overflow: ellipsis;
+  /* 超出的部分用省略号表示   */
+}
+
+.playlist {
+  /* 定义了播放列表.playlist的样式   */
+  display: grid;
+  /* 使用网格布局来排列子元素   */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* 自动填充列，每列宽度最小200像素，最大可用空间的一等份   */
+  gap: 45px 15px;
+  /* 行间距45像素，列间距15像素   */
+  margin-bottom: 45px;
+  /* 下外边距为45像素   */
+}
+
+.cover-wrap {
+  display: flex;
+  /* 使用弹性布局来显示封面包装元素 */
+  position: relative;
+  /* 设置相对定位，以便在其中放置绝对定位的元素 */
+  overflow: hidden;
+  /* 设置溢出隐藏，以隐藏超出封面包装元素的子元素 */
+  width: 100%;
+  /* 设置封面包装元素的宽度为100% */
+  margin-bottom: 15px;
+  /* 设置封面包装元素底部外边距为15像素 */
+  align-items: center;
+  /* 使封面包装元素的子元素在交叉轴上居中对齐 */
+  justify-content: center;
+  /* 使封面包装元素的子元素在主轴上居中对齐 */
+  cursor: pointer;
+  /* 设置鼠标悬停在封面包装元素上时的形状为手形 */
+}
+
+.cover-img {
+  width: 100%;
+  /* 设置封面图片的宽度为100% */
+  transition: all 0.75s;
+  /* 设置封面图片的所有过渡效果的持续时间为0.75秒 */
+}
+
+.cover-mask {
+  position: absolute;
+  /* 设置封面蒙版的定位为绝对定位 */
+  left: 0;
+  /* 设置封面蒙版的左边距为0 */
+  top: 0;
+  /* 设置封面蒙版的顶部边距为0 */
+  right: 0;
+  /* 设置封面蒙版的右边距为0 */
+  bottom: 0;
+  /* 设置封面蒙版的底部边距为0 */
+  background: #000;
+  /* 设置封面蒙版的背景色为黑色 */
+  opacity: 0;
+  /* 设置封面蒙版的透明度为0，即完全透明 */
+  transition: all 0.5s;
+  /* 设置封面蒙版的所有过渡效果的持续时间为0.5秒 */
+}
+
+.cover-play {
+  position: absolute;
+  /* 设置播放按钮的定位为绝对定位 */
+  left: 50%;
+  /* 设置播放按钮的左边距为父元素的宽度的一半 */
+  top: 50%;
+  /* 设置播放按钮的顶部边距为父元素的高度的一半 */
+  margin-left: -35px;
+  /* 通过设置左边距的负值来将播放按钮向左移动35像素，使其水平居中 */
+  margin-top: -35px;
+  /* 通过设置顶部边距的负值来将播放按钮向上移动35像素，使其垂直居中 */
+  opacity: 0;
+  /* 设置播放按钮的透明度为0，即完全透明 */
+  transform: scale(0.7);
+  /* 通过缩放来减小播放按钮的大小 */
+  transition: all 0.5s;
+  /* 设置播放按钮的所有过渡效果的持续时间为0.5秒 */
+}
+
+.cover-wrap:hover .cover-mask {
+  opacity: 0.2;
+  /* 当鼠标悬停在封面包装元素上时，设置封面蒙版的透明度为0.2，即半透明 */
+}
+
+.cover-wrap:hover .cover-play {
+  opacity: 1;
+  /* 当鼠标悬停在封面包装元素上时，设置播放按钮的透明度为1，即完全不透明 */
+  transform: scale(1);
+  /* 当鼠标悬停在封面包装元素上时，通过缩放来恢复播放按钮的大小 */
+}
+
+.cover-wrap:hover .cover-img {
+  transform: scale(1.07);
+  /* 当鼠标悬停在封面包装元素上时，通过缩放来增大封面图片的大小 */
+}
+
+.album-title:hover {
+  color: var(--primary-color);
+  /* 当鼠标悬停在专辑标题上时，设置文本颜色为主色调 */
+}
+
+.album-author {
+  color: #999;
+  /* 设置专辑作者的文本颜色为深灰色 */
+  line-height: 1.6;
+  /* 设置专辑作者的行高为1.6倍的字体大小 */
+}
+
+.album-author:hover {
+  color: var(--primary-color);
+  /* 当鼠标悬停在专辑作者上时，设置文本颜色为主色调 */
+}
+
+.album-time {
+  color: #999;
+  /* 设置专辑发行时间的文本颜色为深灰色 */
+}
+
+.page {
+  display: flex;
+  /* 使用弹性布局来显示分页导航元素 */
+  align-items: center;
+  /* 使分页导航元素的子元素在交叉轴上居中对齐 */
+  justify-content: center;
+  /* 使分页导航元素的子元素在主轴上居中对齐 */
+}
+
+.page-item {
+  display: inline-block;
+  /* 将分页导航项以行内块的方式显示 */
+  color: #a2a2a2;
+  /* 设置分页导航项的文本颜色为灰色 */
+  line-height: 50px;
+  /* 设置分页导航项的行高为50像素 */
+  padding: 0 20px;
+  /* 设置分页导航项的内边距，左右为20像素，上下为0 */
+  margin: 10px;
+  /* 设置分页导航项的外边距为10像素 */
+  font-size: 16px;
+  /* 设置分页导航项的字体大小为16像素 */
+}
+
+.page-current,
+.page-item:not(.page-more):hover {
+  background: var(--primary-color);
+  /* 当鼠标悬停在当前页或非“更多”分页导航项上时，设置背景色为主色调 */
+  color: white;
+  /* 当鼠标悬停在当前页或非“更多”分页导航项上时，设置文本颜色为白色 */
+}
+
+footer {
+  margin-top: 60px;
+  /* 设置页脚的顶部外边距为60像素 */
+  background: #333;
+  /* 设置页脚的背景色为深灰色 */
+  height: 200px;
+  /* 设置页脚的高度为200像素 */
+}
